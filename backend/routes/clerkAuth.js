@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const auth = require('../middleware/auth');
+const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
 // Clerk authentication sync endpoint
@@ -45,12 +45,12 @@ router.post('/clerk-sync', async (req, res) => {
     // Generate JWT token for backend API access
     const token = jwt.sign(
       { 
-        userId: user._id, 
+        id: user._id, 
         email: user.email, 
         role: user.role 
       },
       process.env.JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: process.env.JWT_EXPIRE || '7d' }
     );
 
     res.status(200).json({
@@ -77,9 +77,9 @@ router.post('/clerk-sync', async (req, res) => {
 });
 
 // Get current user (protected route)
-router.get('/me', auth, async (req, res) => {
+router.get('/me', authenticate, async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId).select('-password');
+    const user = await User.findById(req.user.id).select('-password');
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -91,11 +91,11 @@ router.get('/me', auth, async (req, res) => {
 });
 
 // Update user profile (protected route)
-router.put('/profile', auth, async (req, res) => {
+router.put('/profile', authenticate, async (req, res) => {
   try {
     const { firstName, lastName, phone, address } = req.body;
     
-    const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user.id);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -129,7 +129,7 @@ router.put('/profile', auth, async (req, res) => {
 });
 
 // Get all users (admin only)
-router.get('/users', auth, async (req, res) => {
+router.get('/users', authenticate, async (req, res) => {
   try {
     // Check if user is admin
     if (req.user.role !== 'admin') {

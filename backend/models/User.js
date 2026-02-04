@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+  clerkId: {
+    type: String,
+    unique: true,
+    sparse: true, // Allows null values while maintaining uniqueness
+    index: true
+  },
   username: {
     type: String,
     required: true,
@@ -20,8 +26,32 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: function() {
+      return !this.clerkId; // Only required if not using Clerk
+    },
     minlength: 6
+  },
+  firstName: {
+    type: String,
+    trim: true,
+    maxlength: 50
+  },
+  lastName: {
+    type: String,
+    trim: true,
+    maxlength: 50
+  },
+  phone: {
+    type: String,
+    trim: true,
+    match: [/^\+?[\d\s\-\(\)]+$/, 'Please enter a valid phone number']
+  },
+  address: {
+    street: String,
+    city: String,
+    state: String,
+    zipCode: String,
+    country: { type: String, default: 'India' }
   },
   role: {
     type: String,
@@ -32,6 +62,9 @@ const userSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
+  },
+  lastLogin: {
+    type: Date
   },
   createdAt: {
     type: Date,

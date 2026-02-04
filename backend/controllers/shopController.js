@@ -204,10 +204,25 @@ const deleteShop = async (req, res) => {
   }
 };
 
+// Get shops owned by the current user
+const getMyShops = async (req, res) => {
+  try {
+    const shops = await Shop.find({ owner: req.user._id, isActive: true })
+      .populate('category', 'name color')
+      .sort({ createdAt: -1 });
+
+    res.json({ shops });
+  } catch (error) {
+    console.error('Get my shops error:', error);
+    res.status(500).json({ error: 'Failed to get your shops' });
+  }
+};
+
 module.exports = {
   createShop,
   searchShops,
   getShopDetails,
   updateShop,
-  deleteShop
+  deleteShop,
+  getMyShops
 };

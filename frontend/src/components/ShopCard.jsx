@@ -69,7 +69,7 @@ const ShopCard = ({ shop, onClick, className = '' }) => {
             }}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200">
+          <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-blue-100 to-blue-200">
             <div className="text-center">
               <svg className="w-16 h-16 mx-auto text-blue-400 mb-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h3a1 1 0 001-1v-4h4v4a1 1 0 001 1h3a1 1 0 001-1V7l-7-5z" clipRule="evenodd" />

@@ -1,6 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
-const { authenticate, authorize, isShopOwner } = require('../middleware/auth');
+const { authenticate } = require('../middleware/auth');
+const { authorize, isShopOwner } = require('../middleware/rbac');
 const {
   createProduct,
   getProducts,

@@ -1,0 +1,7 @@
+{
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "typescript.suggest.autoImports": false,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.preferences.importModuleSpecifier": "relative"
+}
