@@ -1,0 +1,21 @@
+{
+  "name": "supabase-seeder",
+  "version": "1.0.0",
+  "description": "Node.js script to seed Supabase database with shop and product data",
+  "main": "supabase-seeder.js",
+  "scripts": {
+    "seed": "node supabase-seeder.js",
+    "test": "node -e \"console.log('Testing PostGIS transformation:', require('./supabase-seeder.js').transformToPostGISPoint({lat: 27.6675, lng: 85.3210}))\""
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.95.3"
+  },
+  "keywords": [
+    "supabase",
+    "seeder",
+    "postgis",
+    "database"
+  ],
+  "author": "",
+  "license": "MIT"
+}

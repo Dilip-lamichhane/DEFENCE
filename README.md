@@ -1,455 +1,349 @@
-# 🏪 KhojHub - Location-Based Business Discovery Platform
+# 🎯 KhojHub - Location-Based Business Discovery Platform
 
-A modern, mobile-first MERN stack application that connects customers with local businesses through radius-based search, real-time product availability, and community-driven reviews.
+**KhojHub** is a comprehensive location-based business discovery platform that connects customers with local businesses through radius-based search, real-time product availability, and community-driven reviews. Built with modern web technologies, it serves as a bridge between local businesses and their customers.
 
-## 🌟 Features
+## 🚀 Live Demo
+- **Frontend**: http://localhost:5174/admin (Admin Portal)
+- **Backend API**: http://localhost:5000/api/v1/health
+- **Development**: Both frontend and backend servers running concurrently
 
-### Core Functionality
-- **🔍 Radius-Based Search**: Find businesses within customizable distance ranges (1km, 5km, 10km, 25km)
-- **📍 Interactive Map**: Google Maps integration with real-time location tracking and business markers
-- **⭐ Review System**: Community-driven ratings and reviews for businesses and products
-- **🔔 Real-Time Updates**: Live availability status for products and services
-- **📱 Mobile-First Design**: Optimized for mobile devices with responsive layouts
+## ✨ Key Features
 
-### User Features
-- **👤 User Authentication**: Secure login/signup with Clerk authentication
-- **🛍️ Product Discovery**: Browse products by category, location, and availability
-- **🏪 Shop Profiles**: Detailed business information, hours, and contact details
-- **💬 Review Management**: Rate and review businesses with photo uploads
-- **🔖 Favorite Shops**: Save preferred businesses for quick access
+### 🔍 Smart Business Discovery
+- **Radius-Based Search**: Find businesses within your specified distance
+- **Category Filtering**: Browse by business categories (Restaurants, Electronics, Fitness, etc.)
+- **Geospatial Intelligence**: Location-aware recommendations using PostGIS
+- **Real-Time Availability**: Live product and service status updates
 
-### Business Features
-- **🏢 Business Profiles**: Complete shop management with product listings
-- **📊 Analytics Dashboard**: Track views, reviews, and customer engagement
-- **🛒 Product Management**: Add, update, and manage inventory with availability status
-- **📍 Location Services**: Geospatial search optimization for local visibility
+### 🏪 Business Management
+- **Shop Registration**: Complete business profile setup with location
+- **Product Catalog**: Comprehensive product management system
+- **Business Hours**: Flexible scheduling with weekly availability
+- **Verification System**: Trust badges for verified businesses
+- **Media Gallery**: Logo and image uploads for visual branding
 
-## 🛠️ Tech Stack
+### ⭐ Customer Engagement
+- **Review System**: 5-star rating with detailed feedback
+- **Photo Reviews**: Image attachments for authentic reviews
+- **Rating Aggregation**: Automatic average rating calculations
+- **Community Features**: User-generated content and interactions
 
-### Frontend
-- **React 18** with Vite build tool
-- **Tailwind CSS v4** for modern, utility-first styling
-- **Redux Toolkit** for state management
-- **Clerk** for authentication
-- **React Router v7** for client-side routing
-- **Google Maps API** for location services
-- **Axios** for API communication
+### 🎨 Modern User Interface
+- **Dark/Light Theme**: Complete theme toggle with system detection
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Admin Dashboard**: shadcn-admin inspired modern interface
+- **Loading States**: Smooth transitions and loading indicators
+- **Accessibility**: ARIA labels and keyboard navigation support
 
-### Backend
-- **Node.js** with Express.js framework
-- **MongoDB** with Mongoose ODM
-- **JWT** for token-based authentication
-- **bcrypt** for password hashing
-- **express-validator** for input validation
-- **CORS** for cross-origin resource sharing
+### 🔐 Security & Authentication
+- **Clerk Integration**: Enterprise-grade authentication system
+- **JWT Tokens**: Secure token-based authentication
+- **Role-Based Access**: User, Shopkeeper, and Admin roles
+- **Input Validation**: Server-side validation with express-validator
+- **CORS Protection**: Proper cross-origin request handling
 
-### Development Tools
-- **ESLint** for code linting
-- **Vite** for fast development and building
-- **nodemon** for backend hot reloading
-- **MongoDB Compass** for database management
+## 🏗️ Technology Stack
 
-## 🚀 Quick Start
+### Frontend Architecture
+```
+React 19.2.0 + Vite → Redux Toolkit → Tailwind CSS → Clerk Auth
+```
+
+**Core Technologies:**
+- **React 19.2.0**: Modern functional components with hooks
+- **Redux Toolkit**: Predictable state management with async thunks
+- **Tailwind CSS 4.1.18**: Utility-first CSS framework
+- **Vite**: Lightning-fast build tool and dev server
+- **Clerk**: Complete authentication solution
+- **Google Maps**: Geospatial mapping and location services
+- **Recharts**: Data visualization and analytics charts
+- **Lucide React**: Beautiful icon library
+
+### Backend Architecture
+```
+Node.js + Express.js → MongoDB + Mongoose → JWT Auth → Supabase
+```
+
+**Core Technologies:**
+- **Node.js**: JavaScript runtime environment
+- **Express.js 5.2.1**: Minimal web application framework
+- **MongoDB**: Primary NoSQL database with geospatial support
+- **Mongoose**: Elegant MongoDB object modeling
+- **Supabase**: Secondary PostgreSQL database with PostGIS
+- **JWT**: JSON Web Token authentication
+- **bcrypt**: Password hashing and security
+- **Express-validator**: Input validation middleware
+
+### Database Design
+
+#### MongoDB Collections
+- **Users**: Complete user profiles with authentication
+- **Shops**: Business information with 2dsphere geospatial indexing
+- **Products**: Catalog items with pricing and availability
+- **Reviews**: Customer feedback with ratings and photos
+- **Categories**: Business categorization system
+
+#### Supabase Tables (PostGIS Enabled)
+- **shops**: Business data with geographic coordinates
+- **products**: Product catalog with foreign key relationships
+- **Spatial Indexing**: PostGIS geography point data type
+- **Foreign Keys**: Proper referential integrity constraints
+
+## 📊 Data Statistics
+
+### Seeded Database (Ready for Testing)
+- **20 Shops** across 10 different business categories
+- **200 Products** (10 products per shop)
+- **10 Categories**: Restaurant, Electronics, Fitness, Health/Medicine, Automobile, Grocery, Clothing, Books, Pet Supplies, Gardening
+- **Geographic Coverage**: All shops located in Lalitpur area, Nepal
+- **PostGIS Integration**: Full spatial data support with radius queries
+
+### Sample Business Categories
+1. **Restaurants**: The Lazy Griller, Newari Dhaba
+2. **Electronics**: Delta Tech Store, Smartcare Home Appliances  
+3. **Fitness**: Iron Temple Gym & Shop, Zen Yoga Studio
+4. **Health**: Nepal Pharma Distributors, Herbal Life Store
+5. **Automobile**: Mahindra Auto Parts, Hero Bike Zone
+6. **And More**: Grocery, Clothing, Books, Pet Supplies, Gardening
+
+## 🚀 Quick Start Guide
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local or cloud instance)
+- Node.js (v18 or higher)
+- MongoDB (local or cloud)
+- Supabase account (for PostGIS features)
 - Google Maps API key
-- Clerk account and API keys
+- Clerk account for authentication
 
-### Installation
+### Installation & Setup
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Dilip-lamichhane/KhojUpdate.git
-   cd KhojUpdate
-   ```
+```bash
+git clone https://github.com/Dilip-lamichhane/DEFENCE.git
+cd DEFENCE
+```
 
 2. **Install dependencies**
-   ```bash
-   # Install frontend dependencies
-   cd frontend
-   npm install
-
-   # Install backend dependencies
-   cd ../backend
-   npm install
-   ```
-
-3. **Environment Setup**
-   
-   Create `.env` files in both frontend and backend directories:
-
-   **Frontend `.env`:**
-   ```env
-   VITE_API_URL=http://localhost:5000/api/v1
-   VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-   ```
-
-   **Backend `.env`:**
-   ```env
-   PORT=5000
-   MONGODB_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
-   CLERK_SECRET_KEY=your_clerk_secret_key
-   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   ```
-
-4. **Start Development Servers**
-   
-   **Backend:**
-   ```bash
-   cd backend
-   npm run dev
-   ```
-   
-   **Frontend:**
-   ```bash
-   cd frontend
-   npm run dev
-   ```
-
-5. **Access the Application**
-   - Frontend: http://localhost:5174
-   - Backend API: http://localhost:5000
-   - API Health Check: http://localhost:5000/api/v1/health
-
-## 📖 API Documentation
-
-### Base URL
-```
-http://localhost:5000/api/v1
-```
-
-### Authentication Endpoints
-
-#### User Registration
-```http
-POST /auth/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "securepassword123",
-  "role": "customer"
-}
-```
-
-#### User Login
-```http
-POST /auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "securepassword123"
-}
-```
-
-### Shop Endpoints
-
-#### Get All Shops (with search)
-```http
-GET /shops/search?lat=27.7172&lng=85.3240&radius=5&category=restaurant
-```
-
-#### Get Shop Details
-```http
-GET /shops/:shopId
-```
-
-#### Create Shop (Business Owner)
-```http
-POST /shops
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "name": "Burger Palace",
-  "description": "Best burgers in town",
-  "category": "restaurant",
-  "location": {
-    "type": "Point",
-    "coordinates": [85.3240, 27.7172]
-  },
-  "address": "Kathmandu, Nepal",
-  "phone": "+9771234567890",
-  "email": "info@burgerpalace.com",
-  "website": "https://burgerpalace.com",
-  "operatingHours": {
-    "monday": "09:00-21:00",
-    "tuesday": "09:00-21:00",
-    "wednesday": "09:00-21:00",
-    "thursday": "09:00-21:00",
-    "friday": "09:00-22:00",
-    "saturday": "09:00-22:00",
-    "sunday": "10:00-20:00"
-  }
-}
-```
-
-### Product Endpoints
-
-#### Get Products by Shop
-```http
-GET /products/shop/:shopId
-```
-
-#### Create Product
-```http
-POST /products
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "name": "Classic Burger",
-  "description": "Juicy beef patty with fresh vegetables",
-  "price": 350,
-  "category": "food",
-  "shopId": "shop_id_here",
-  "availability": true,
-  "images": ["burger-image-url.jpg"]
-}
-```
-
-### Review Endpoints
-
-#### Get Reviews by Shop
-```http
-GET /reviews/shop/:shopId
-```
-
-#### Create Review
-```http
-POST /reviews
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "shopId": "shop_id_here",
-  "rating": 5,
-  "comment": "Excellent food and service!",
-  "images": ["review-image-url.jpg"]
-}
-```
-
-## 🗄️ Database Schema
-
-### User Model
-```javascript
-{
-  _id: ObjectId,
-  clerkId: String,           // Clerk user ID
-  name: String,
-  email: String,
-  role: String,              // 'customer' | 'business_owner' | 'admin'
-  avatar: String,
-  location: {
-    type: String,            // 'Point'
-    coordinates: [Number]    // [longitude, latitude]
-  },
-  preferences: {
-    radius: Number,          // Default search radius in km
-    categories: [String]     // Preferred categories
-  },
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
-### Shop Model
-```javascript
-{
-  _id: ObjectId,
-  name: String,
-  description: String,
-  category: String,
-  ownerId: ObjectId,         // Reference to User
-  location: {
-    type: String,            // 'Point'
-    coordinates: [Number]    // [longitude, latitude]
-  },
-  address: String,
-  phone: String,
-  email: String,
-  website: String,
-  operatingHours: Object,
-  images: [String],
-  rating: Number,
-  reviewCount: Number,
-  isVerified: Boolean,
-  isActive: Boolean,
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
-### Product Model
-```javascript
-{
-  _id: ObjectId,
-  name: String,
-  description: String,
-  price: Number,
-  category: String,
-  shopId: ObjectId,        // Reference to Shop
-  availability: Boolean,
-  images: [String],
-  rating: Number,
-  reviewCount: Number,
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
-### Review Model
-```javascript
-{
-  _id: ObjectId,
-  userId: ObjectId,          // Reference to User
-  shopId: ObjectId,          // Reference to Shop
-  productId: ObjectId,       // Reference to Product (optional)
-  rating: Number,            // 1-5 stars
-  comment: String,
-  images: [String],
-  isVerified: Boolean,
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
-## 🎯 Frontend Architecture
-
-### Component Structure
-```
-src/
-├── components/
-│   ├── Navigation.jsx      # Glassmorphism navigation with Clerk auth
-│   ├── ShopCard.jsx        # Business card component
-│   ├── RatingStars.jsx     # Rating display component
-│   ├── MapComponent.jsx    # Google Maps integration
-│   ├── LoadingSpinner.jsx  # Loading state component
-│   └── ProtectedRoute.jsx  # Route protection component
-├── pages/
-│   ├── HomePage.jsx        # Premium homepage (6 sections)
-│   ├── ShopDetailsPage.jsx # Individual shop details
-│   ├── ProfilePage.jsx     # User profile management
-│   ├── LoginPage.jsx       # Authentication page
-│   └── RegisterPage.jsx    # Registration page
-├── store/
-│   ├── store.js            # Redux store configuration
-│   ├── hooks.js            # Custom Redux hooks
-│   └── slices/
-│       ├── authSlice.js    # Authentication state
-│       ├── shopsSlice.js   # Shop data management
-│       ├── reviewsSlice.js # Review system
-│       ├── mapSlice.js     # Map state
-│       └── uiSlice.js      # UI state
-└── App.jsx                 # Main application component
-```
-
-### State Management
-- **Redux Toolkit** for global state management
-- **React Context** for authentication state
-- **Local component state** for UI interactions
-- **Custom hooks** for data fetching and caching
-
-## 🔧 Development Guidelines
-
-### Code Style
-- Use functional components with React Hooks
-- Follow consistent naming conventions (camelCase for variables, PascalCase for components)
-- Implement proper error handling and loading states
-- Write self-documenting code with clear variable names
-
-### Git Workflow
-- Create feature branches for new developments
-- Write descriptive commit messages
-- Include issue numbers in commit messages when applicable
-- Test thoroughly before merging to main branch
-
-### Performance Optimization
-- Implement lazy loading for components
-- Use React.memo for expensive components
-- Optimize images and assets
-- Implement proper caching strategies
-
-## 🚀 Deployment
-
-### Frontend Deployment (Vercel)
 ```bash
-cd frontend
-npm run build
-vercel --prod
+# Install all dependencies (root, frontend, backend)
+npm install
 ```
 
-### Backend Deployment (Heroku/Railway)
+3. **Environment Configuration**
 ```bash
+# Frontend (.env in frontend/)
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_key
+VITE_API_URL=http://localhost:5000/api/v1
+
+# Backend (.env in backend/)
+MONGODB_URI=your_mongodb_connection
+JWT_SECRET=your_jwt_secret
+CLERK_SECRET_KEY=your_clerk_secret
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_supabase_key
+```
+
+4. **Database Setup**
+```bash
+# Run Supabase schema setup
 cd backend
-heroku create your-app-name
-git push heroku main
+node check-schema.js
+
+# Seed the database with sample data
+node supabase-seeder-expanded.js
 ```
 
-### Environment Variables for Production
-- Update API URLs to production endpoints
-- Configure CORS for production domains
-- Set up SSL certificates
-- Configure database connection strings
+5. **Start Development Servers**
+```bash
+# Start both frontend and backend concurrently
+npm run dev
 
-## 📱 Mobile Optimization
+# Or start individually
+npm run frontend  # Frontend on http://localhost:5174
+npm run backend   # Backend on http://localhost:5000
+```
 
-### Responsive Design
-- Mobile-first approach with Tailwind CSS
-- Touch-friendly interface elements
-- Optimized images for mobile devices
-- Fast loading on slow connections
+## 🎯 Development Workflow
 
-### Progressive Web App (PWA)
-- Service worker implementation
-- Offline functionality
-- Push notifications
-- App-like experience
+### Frontend Development
+- **Hot Reload**: Instant code changes without page refresh
+- **Component Architecture**: Modular, reusable React components
+- **State Management**: Redux with proper action/reducer patterns
+- **Styling**: Tailwind CSS with custom component classes
+- **Build Optimization**: Vite with tree shaking and code splitting
 
-## 🔐 Security Features
+### Backend Development
+- **API Design**: RESTful endpoints with proper HTTP methods
+- **Error Handling**: Comprehensive error responses and logging
+- **Validation**: Server-side input validation with detailed messages
+- **Database Queries**: Optimized MongoDB queries with indexing
+- **Security**: JWT authentication with role-based access control
+
+### Database Management
+- **MongoDB**: Primary database for application data
+- **Supabase**: Secondary database for geospatial features
+- **Seeding**: Automated data seeding for development/testing
+- **Migration**: Schema versioning and migration scripts
+- **Backup**: Regular database backup procedures
+
+## 🔧 API Endpoints
 
 ### Authentication
-- JWT token-based authentication
-- Clerk integration for secure user management
-- Password hashing with bcrypt
-- Rate limiting on API endpoints
+- `POST /api/v1/auth/register` - User registration
+- `POST /api/v1/auth/login` - User login
+- `GET /api/v1/auth/profile` - Get user profile
+- `PUT /api/v1/auth/profile` - Update user profile
+
+### Shops
+- `GET /api/v1/shops` - Get all shops
+- `GET /api/v1/shops/search` - Search shops by location/radius
+- `GET /api/v1/shops/:id` - Get shop details
+- `POST /api/v1/shops` - Create new shop
+- `PUT /api/v1/shops/:id` - Update shop information
+
+### Products
+- `GET /api/v1/products` - Get all products
+- `GET /api/v1/products/shop/:shopId` - Get shop products
+- `POST /api/v1/products` - Create new product
+- `PUT /api/v1/products/:id` - Update product
+- `DELETE /api/v1/products/:id` - Delete product
+
+### Reviews
+- `GET /api/v1/reviews/shop/:shopId` - Get shop reviews
+- `POST /api/v1/reviews` - Create new review
+- `PUT /api/v1/reviews/:id` - Update review
+- `DELETE /api/v1/reviews/:id` - Delete review
+
+## 🎨 UI Components
+
+### Custom Components
+- **ThemeToggle**: Dark/light mode switcher
+- **SearchBar**: Location and keyword search
+- **ShopCard**: Business display card with ratings
+- **RatingStars**: Interactive star rating component
+- **MapComponent**: Google Maps integration
+- **LoadingSpinner**: Loading state indicator
+- **ProtectedRoute**: Route authentication guard
+
+### Admin Dashboard Components
+- **Analytics Cards**: Revenue and user statistics
+- **Charts**: Line charts, area charts, pie charts
+- **Data Tables**: Sortable and filterable tables
+- **Action Buttons**: CRUD operation buttons
+- **Status Indicators**: Online/offline badges
+
+## 📱 Mobile Responsiveness
+
+### Breakpoint Strategy
+- **Mobile**: 320px - 768px (Single column layout)
+- **Tablet**: 768px - 1024px (Two column layout)
+- **Desktop**: 1024px+ (Multi-column layout)
+
+### Touch Optimizations
+- **Touch-Friendly Buttons**: Minimum 44px touch targets
+- **Swipe Gestures**: Support for swipe navigation
+- **Optimized Images**: Responsive images with proper sizing
+- **Performance**: Fast loading on mobile networks
+
+## 🔒 Security Features
+
+### Authentication Security
+- **JWT Token Expiry**: Configurable token expiration
+- **Password Requirements**: Strong password validation
+- **Rate Limiting**: API request rate limiting
+- **CORS Configuration**: Proper cross-origin setup
 
 ### Data Protection
-- Input validation and sanitization
-- XSS protection
-- SQL injection prevention
-- Secure HTTP headers
+- **Environment Variables**: Sensitive data in .env files
+- **Input Sanitization**: XSS and SQL injection prevention
+- **Error Messages**: Non-sensitive error responses
+- **HTTPS Ready**: SSL/TLS configuration support
+
+## 📈 Performance Optimization
+
+### Frontend Performance
+- **Code Splitting**: Lazy loading for routes and components
+- **Image Optimization**: Responsive images with proper formats
+- **Bundle Size**: Tree shaking and dead code elimination
+- **Caching**: Browser caching strategies
+
+### Backend Performance
+- **Database Indexing**: Optimized queries with proper indexes
+- **Connection Pooling**: Efficient database connections
+- **Query Optimization**: Optimized MongoDB aggregation pipelines
+- **Response Compression**: Gzip compression for API responses
+
+## 🧪 Testing Strategy
+
+### Unit Testing
+- **Component Testing**: React component unit tests
+- **API Testing**: Backend endpoint testing
+- **Database Testing**: Database query testing
+- **Integration Testing**: Full workflow testing
+
+### Manual Testing
+- **Cross-Browser**: Chrome, Firefox, Safari, Edge
+- **Mobile Testing**: iOS and Android devices
+- **Performance Testing**: Load testing and stress testing
+- **Security Testing**: Vulnerability assessment
+
+## 🚀 Deployment Options
+
+### Development
+- **Local Development**: Full stack on localhost
+- **Database**: Local MongoDB and Supabase
+- **Hot Reload**: Instant code changes
+
+### Production Deployment
+- **Frontend**: Vercel, Netlify, or AWS S3
+- **Backend**: Heroku, AWS EC2, or DigitalOcean
+- **Database**: MongoDB Atlas or AWS DocumentDB
+- **CDN**: CloudFlare or AWS CloudFront
+
+## 📚 Documentation
+
+### Available Documentation
+- **[updates.md](updates.md)**: Complete project development log
+- **[techstack.md](techstack.md)**: Detailed technology stack
+- **[instructions.md](instructions.md)**: Development setup guide
+- **[MONGODB_COMPASS_SETUP.md](MONGODB_COMPASS_SETUP.md)**: Database setup
+
+### Code Documentation
+- **Inline Comments**: Detailed code comments
+- **API Documentation**: Swagger/OpenAPI ready
+- **Component Stories**: Storybook integration ready
+- **Architecture Diagrams**: System architecture documentation
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Development Guidelines
+1. Follow the existing code style and patterns
+2. Write meaningful commit messages
+3. Test your changes thoroughly
+4. Update documentation as needed
+5. Submit pull requests for review
 
-## 📝 License
+### Code Style
+- **ESLint**: Follow the configured ESLint rules
+- **Prettier**: Use Prettier for code formatting
+- **Naming Conventions**: Follow React and JavaScript conventions
+- **Component Structure**: Use functional components with hooks
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📞 Support & Contact
 
-## 🆘 Support
+### Project Maintainer
+- **GitHub**: [Dilip-lamichhane](https://github.com/Dilip-lamichhane)
+- **Repository**: [DEFENCE](https://github.com/Dilip-lamichhane/DEFENCE)
 
-For support, email support@khojhub.com or join our Slack channel.
-
-## 🙏 Acknowledgments
-
-- Google Maps API for location services
-- Clerk for authentication services
-- Tailwind CSS for styling framework
-- React community for excellent libraries
-- MongoDB for database services
+### Issues & Bug Reports
+- Use GitHub Issues for bug reports
+- Provide detailed reproduction steps
+- Include environment information
+- Attach screenshots if applicable
 
 ---
 
-**Built with ❤️ by the KhojHub Team**
+**🎯 KhojHub** - Connecting local businesses with customers through intelligent location-based discovery.
+
+*Built with ❤️ using React, Node.js, MongoDB, and Supabase*

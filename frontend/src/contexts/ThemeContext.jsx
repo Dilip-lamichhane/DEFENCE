@@ -11,20 +11,22 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    // Load theme from localStorage on mount
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
+  // Initialize with system preference or localStorage value
+  const getInitialTheme = () => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+      return prefersDark ? 'dark' : 'light';
     }
-  }, []);
+    return 'light';
+  };
 
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  // Apply theme when theme changes
   useEffect(() => {
     // Apply theme to document root and body
     document.documentElement.classList.remove('light', 'dark');
@@ -34,6 +36,11 @@ export const ThemeProvider = ({ children }) => {
     
     // Save theme to localStorage
     localStorage.setItem('theme', theme);
+    
+    // Debug logging
+    console.log('ThemeContext - Applied theme:', theme);
+    console.log('ThemeContext - Document classes:', document.documentElement.classList.toString());
+    console.log('ThemeContext - Body classes:', document.body.classList.toString());
   }, [theme]);
 
   const toggleTheme = () => {
